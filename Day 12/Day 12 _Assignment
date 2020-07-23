@@ -1,0 +1,56 @@
+Non – Parametric Test
+
+
+1.	Wilcoxon Test
+
+from scipy.stats import wilcoxon 
+stats, p=wilcoxon(dataset_yes_att.MonthlyIncome, dataset_yes_att.PercentSalaryHike)
+
+print (stats,p)
+0.0 4.591075641173894e-118
+
+Null : there is not significance difference between monthly salary and Percentage hike
+Alternate : there is significance difference between monthly salary and Percentage hike
+
+Null rejected 
+
+
+
+
+
+2.	Friedman Test
+
+from scipy.stats import friedmanchisquare
+
+stats, p=friedmanchisquare(dataset_yes_att.MonthlyIncome, dataset_yes_att.YearsSinceLastPromotion, dataset_yes_att.YearsWithCurrManager)
+
+print (stats,p)
+1223.2340425531922 2.3883755766552516e-266
+
+
+Null : there is not significance difference in monthly salary, promotion & years with current manager for attrition employees
+Alternate : there is significance difference in monthly salary, promotion & years with current manager for attrition employees
+
+Null rejected 
+
+
+
+
+
+3.	Man Whitney Test
+
+from scipy.stats import mannwhitneyu
+
+dataset_no_att=pd.read_excel("Assignment\Attr_no.xlsx")
+
+dataset_yes_att=pd.read_excel("Assignment\Attr_yes.xlsx")
+
+stats, p=mannwhitneyu(dataset_yes_att.DistanceFromHome, dataset_no_att.DistanceFromHome)
+
+print (stats,p)
+1312110.0 0.4629185205822659
+
+Null : there is not significance difference between distance from home for attrition and non-attrition 
+Alternate : there is significance difference between distance from home for attrition and non-attrition 
+
+Null accepted
